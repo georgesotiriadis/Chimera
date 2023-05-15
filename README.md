@@ -2,7 +2,7 @@
 
   
 
-![](Images/0_create%20a%20logo%20that%20represents%20chimera%20creature%20of%20_esrgan-v1-x2plus(1).png)  
+![](Images/Chimera).png)  
 
   
 
