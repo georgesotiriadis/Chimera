@@ -307,7 +307,7 @@ if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
 # Generate output file path
-output_filename = os.path.join(output_folder, "main.c")
+output_filename = os.path.join(output_folder, "main.cpp")
 
 # Write encoded shellcode to output file
 with open(output_filename, "w") as f:
