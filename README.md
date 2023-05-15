@@ -2,20 +2,21 @@
 
   
 
-![](Images/Chimera.png)  
+![](Images/0_create%20a%20logo%20that%20represents%20chimera%20creature%20of%20_esrgan-v1-x2plus(1).png)  
 
   
 
 ## Tool Background 
 
   
+
 While DLL sideloading can be used for legitimate purposes, such as loading necessary libraries for a program to function, it can also be used for malicious purposes. Attackers can use DLL sideloading to execute arbitrary code on a target system, often by exploiting vulnerabilities in legitimate applications that are used to load DLLs.
 
 To automate the DLL sideloading process and make it more effective, Chimera was created a tool that include evasion methodologies to bypass EDR/AV products. These tool can automatically encrypt a shellcode via XOR with a random key and create template Images that can be imported into Visual Studio to create a malicious DLL.
 
 The tool automatically encrypts a shellcode via XOR with a random key and creates template Images which can then be imported into Visual Studio to create a malicious DLL.
 
-Also Dynamic Syscalls from SysWhispers2 is used and a modified assembly version to evade the pattern that the EDR search for, Random nop sleds are added and also registers are moved. Furthermore APC injection is also used to inject the shellcode in another process which the user can specify with Sandbox Evasion mechanisms like HardDisk check & if the process is being debugged. Finally Timing attack is placed in the loader which using waitable timers to delay the execution of the shellcode.
+Also Dynamic Syscalls from SysWhispers2 is used and a modified assembly version to evade the pattern that the EDR search for, Random nop sleds are added and also registers are moved. Furthermore Early Bird Injection is also used to inject the shellcode in another process which the user can specify with Sandbox Evasion mechanisms like HardDisk check & if the process is being debugged. Finally Timing attack is placed in the loader which using waitable timers to delay the execution of the shellcode.
 
   
 
@@ -51,7 +52,7 @@ Chimera Usage.
 
 `python3 ./chimera.py met.bin chimera_automation notepad.exe onedrive`
 
-
+###   
 
 ### Usefull Note
 
@@ -137,16 +138,22 @@ Step 2: Remove Debug Information's
 1. In Visual Studio choose Project → properties 
 2. Linker → Debugging → Generate Debug Info → No
 
-![](Images/image%207.png)
-
-
+![](Images/image%207.png)  
 
 ## Liability Disclaimer:
-To the maximum extent permitted by applicable law, myself(George Sotiriadis) and/or affiliates who have submitted content to my repo, shall not be liable for any indirect, incidental, special, consequential or punitive damages, or any loss of profits or revenue, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from (i) your access to this resource and/or inability to access this resource; (ii) any conduct or content of any third party referenced by this resource, including without limitation, any defamatory, offensive or illegal conduct or other users or third parties; (iii) any content obtained from this resource
 
-## References 
-https://www.ired.team/offensive-security/code-injection-process-injection/early-bird-apc-queue-code-injection
-https://evasions.checkpoint.com/
-https://github.com/Flangvik/SharpDllProxy
-https://github.com/jthuraisamy/SysWhispers2
-https://systemweakness.com/on-disk-detection-bypass-avs-edr-s-using-syscalls-with-legacy-instruction-series-of-instructions-5c1f31d1af7d
+_To the maximum extent permitted by applicable law, myself(George Sotiriadis) and/or affiliates who have submitted content to my repo, shall not be liable for any indirect, incidental, special, consequential or punitive damages, or any loss of profits or revenue, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses, resulting from (i) your access to this resource and/or inability to access this resource; (ii) any conduct or content of any third party referenced by this resource, including without limitation, any defamatory, offensive or illegal conduct or other users or third parties; (iii) any content obtained from this resource_
+
+  
+
+## References 
+
+[https://www.ired.team/offensive-security/code-injection-process-injection/early-bird-apc-queue-code-injection](https://www.ired.team/offensive-security/code-injection-process-injection/early-bird-apc-queue-code-injection)
+
+[https://evasions.checkpoint.com/](https://evasions.checkpoint.com/)
+
+[https://github.com/Flangvik/SharpDllProxy](https://github.com/Flangvik/SharpDllProxy)
+
+[](https://github.com/jthuraisamy/SysWhispers2 "https://github.com/jthuraisamy/SysWhispers2")[https://github.com/jthuraisamy/SysWhispers2](https://github.com/jthuraisamy/SysWhispers2)
+
+[https://systemweakness.com/on-disk-detection-bypass-avs-edr-s-using-syscalls-with-legacy-instruction-series-of-instructions-5c1f31d1af7d](https://systemweakness.com/on-disk-detection-bypass-avs-edr-s-using-syscalls-with-legacy-instruction-series-of-instructions-5c1f31d1af7d)
