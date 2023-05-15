@@ -178,3 +178,5 @@ _To the maximum extent permitted by applicable law, myself(George Sotiriadis) an
 [](https://github.com/jthuraisamy/SysWhispers2 "https://github.com/jthuraisamy/SysWhispers2")[https://github.com/jthuraisamy/SysWhispers2](https://github.com/jthuraisamy/SysWhispers2)
 
 [https://systemweakness.com/on-disk-detection-bypass-avs-edr-s-using-syscalls-with-legacy-instruction-series-of-instructions-5c1f31d1af7d](https://systemweakness.com/on-disk-detection-bypass-avs-edr-s-using-syscalls-with-legacy-instruction-series-of-instructions-5c1f31d1af7d)
+
+[https://github.com/Mr-Un1k0d3r](https://github.com/Mr-Un1k0d3r)
