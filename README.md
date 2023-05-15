@@ -2,7 +2,7 @@
 
   
 
-![](Images/Chimera).png)  
+![](Images/Chimera.png)  
 
   
 
