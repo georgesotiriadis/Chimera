@@ -68,8 +68,6 @@ def print_usage():
 
 
 
-
-
 # read the shellcode from the file and then encrypt it
 # Also output folder will be specified & the name of the process which will be injected
 
@@ -97,8 +95,6 @@ with open(os.path.join(folder_path, file_option), "r") as f:
 
 
 ciphertext = DoXor(plaintext, key)
-#'"' + '"\n"'.join(ciphertext[i:i+128] for i in range(0, len(ciphertext), 128)) + '"'
-
 
 # Split the ciphertext into chunks of 50 hex values
 chunks = [ciphertext[i:i+50] for i in range(0, len(ciphertext), 50)]
