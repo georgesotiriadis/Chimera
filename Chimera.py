@@ -6,7 +6,7 @@ for DLL sideloading with the encrypted shellcode and a randomly generated 4-byte
 Also we will use Dynamic Syscalls from syswispers 2 the assembly is modified to evade the pattern that the EDR search 
 Random nop sleds are added and also registers are moved.
 APC injection is also used to inject the shellcode in another process
-Also Sandobox Evasion mechanisms are used Harddisk check & if the process is being debugged.
+Also Sandbox Evasion mechanisms are used Harddisk check & if the process is being debugged.
 Finally Timing attack is placed in the loader which using waitable timers to delay the execution of the shellcode. 
 Test fails if any of the calls return an error state.
 """
