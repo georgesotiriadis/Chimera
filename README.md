@@ -13,7 +13,6 @@ While DLL sideloading can be used for legitimate purposes, such as loading neces
 
 To automate the DLL sideloading process and make it more effective, Chimera was created a tool that include evasion methodologies to bypass EDR/AV products. These tool can automatically encrypt a shellcode via XOR with a random key and create template Images that can be imported into Visual Studio to create a malicious DLL.
 
-The tool automatically encrypts a shellcode via XOR with a random key and creates template Images which can then be imported into Visual Studio to create a malicious DLL.
 
 Also Dynamic Syscalls from SysWhispers2 is used and a modified assembly version to evade the pattern that the EDR search for, Random nop sleds are added and also registers are moved. Furthermore Early Bird Injection is also used to inject the shellcode in another process which the user can specify with Sandbox Evasion mechanisms like HardDisk check & if the process is being debugged. Finally Timing attack is placed in the loader which using waitable timers to delay the execution of the shellcode.
 
