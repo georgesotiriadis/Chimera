@@ -64,7 +64,7 @@ For Microsoft OneDrive the script uses version DLL which is common because its m
 
   
 
-### Usefull Note
+### Useful Note
 
 Once the compilation process is complete, a DLL will be generated, which should include either "version.dll" for OneDrive or "userenv.dll" for Microsoft Teams. Next, it is necessary to rename the original DLLs.
 
