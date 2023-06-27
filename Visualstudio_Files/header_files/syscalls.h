@@ -143,19 +143,6 @@ EXTERN_C NTSTATUS NtCreateThreadEx(
 	IN PPS_ATTRIBUTE_LIST AttributeList OPTIONAL);
 
 
-
-EXTERN_C NTSTATUS NtProtectVirtualMemory(
-
-
-
-	IN HANDLE               ProcessHandle,
-	IN OUT PVOID* BaseAddress,
-	IN OUT PSIZE_T           NumberOfBytesToProtect,
-	IN ULONG                NewAccessProtection,
-	OUT PULONG              OldAccessProtection);
-
-
-
 EXTERN_C NTSTATUS NtClose(
 	IN HANDLE Handle);
 

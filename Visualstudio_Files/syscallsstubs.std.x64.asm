@@ -36,29 +36,38 @@ WhisperMain PROC
     ret
 WhisperMain ENDP
 
-NtResumeThread PROC
-    mov currentHash, 03A9E2023h    ; Load function hash into global variable.
-    call WhisperMain               ; Resolve function hash into syscall number and make the call
-NtResumeThread ENDP
-
-NtQueueApcThread PROC
-    mov currentHash, 07651EC6Fh    ; Load function hash into global variable.
-    call WhisperMain               ; Resolve function hash into syscall number and make the call
-NtQueueApcThread ENDP
-
 NtAllocateVirtualMemory PROC
-    mov currentHash, 0039128C3h    ; Load function hash into global variable.
+    mov currentHash, 03DA12723h    ; Load function hash into global variable.
     call WhisperMain               ; Resolve function hash into syscall number and make the call
 NtAllocateVirtualMemory ENDP
 
-NtProtectVirtualMemory PROC
-    mov currentHash, 007971F07h    ; Load function hash into global variable.
-    call WhisperMain               ; Resolve function hash into syscall number and make the call
-NtProtectVirtualMemory ENDP
-
 NtWriteVirtualMemory PROC
-    mov currentHash, 0CD9930E2h    ; Load function hash into global variable.
+    mov currentHash, 01B950117h    ; Load function hash into global variable.
     call WhisperMain               ; Resolve function hash into syscall number and make the call
 NtWriteVirtualMemory ENDP
+
+NtQueueApcThread PROC
+    mov currentHash, 032EE1057h    ; Load function hash into global variable.
+    call WhisperMain               ; Resolve function hash into syscall number and make the call
+NtQueueApcThread ENDP
+
+NtResumeThread PROC
+    mov currentHash, 010364D07h    ; Load function hash into global variable.
+    call WhisperMain               ; Resolve function hash into syscall number and make the call
+NtResumeThread ENDP
+
+
+NtCreateThreadEx PROC
+    mov currentHash, 0042BCB7Dh    ; Load function hash into global variable.
+    call WhisperMain               ; Resolve function hash into syscall number and make the call
+NtCreateThreadEx ENDP
+
+NtClose PROC
+    mov currentHash, 00B13FF03h    ; Load function hash into global variable.
+    call WhisperMain               ; Resolve function hash into syscall number and make the call
+NtClose ENDP
+
+
+
 
 end
