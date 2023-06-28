@@ -1,1 +1,0 @@
-folder_path="./Dll_Exports/"

