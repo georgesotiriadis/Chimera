@@ -19,18 +19,18 @@ def Controller():
     args = parse_arguments()
     try:
         plaintext = open(args.raw[0],"rb").read()
-        output_folder = args.path[0]
+        output_folder = args.path
         process_to_inject = args.pname
-        file_alias = args.dexports[0]
+        file_alias = args.dexports
         if file_alias not in array_dll_names:
             print(f"Invalid file option. Available options: {', '.join(array_dll_names.keys())}\n")
             sys.exit(1)
         file_option = array_dll_names[file_alias]
-        encryption_type =  args.enc[0]
-        injection = args.inj[0]
-        shellcode_var =args.rshell[0]
-        xor_func = args.rxor[0]
-        key_var = args.rkey[0]
+        encryption_type =  args.enc
+        injection = args.inj
+        shellcode_var =args.rshell
+        xor_func = args.rxor
+        key_var = args.rkey
         time = args.rsleep
     except:
         parse_arguments()
