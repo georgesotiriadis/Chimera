@@ -13,9 +13,9 @@ def parse_arguments():
     parser.add_argument("--pname", "-n", help="Name of process to inject shellcode into",
     type=str,metavar='',required=True)
     parser.add_argument("--dexports", "-d", help="Specify which DLL Exports you want to use either teams or onedrive",
-    type=str,metavar='',choices=['teams', 'onedrive'],required=True)
+    type=str,nargs=1,metavar='',choices=['teams', 'onedrive'],required=True)
     parser.add_argument("--enc", "-e", help="Specify which encryption you prefer (XOR / AES)",
-    type=str,metavar='',choices=['XOR', 'AES'],required=True)
+    type=str,nargs=1,metavar='',choices=['XOR', 'AES'],required=True)
     parser.add_argument("--inj", "-i", help="Specify which injection technique you prefer (EB / MS)",
     type=str,metavar='',choices=['EB', 'MS'],required=True)
     parser.add_argument("--rshell", "-s", help="[Optional] Replace shellcode variable name with a unique name",

