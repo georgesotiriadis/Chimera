@@ -1,6 +1,9 @@
 #pip install crypto, pycryptodome
 import sys
+#For Linux
 from Cryptodome.Cipher import AES 
+#For Windows
+#from Crypto.Cipher import AES
 from secrets import token_bytes
 from binascii import unhexlify
 import random

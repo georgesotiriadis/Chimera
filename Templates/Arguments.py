@@ -19,13 +19,15 @@ def parse_arguments():
     parser.add_argument("--inj", "-i", help="Specify which injection technique you prefer (EB / MS)",
     type=str,metavar='',choices=['EB', 'MS'],required=True)
     parser.add_argument("--rshell", "-s", help="[Optional] Replace shellcode variable name with a unique name",
-    type=str,metavar='',required=False, default="encoded_kwdikas")
+    type=str,metavar='',required=False, default="encoded_shell")
     parser.add_argument("--rxor", "-x", help="[Optional] Replace xor encryption name with a unique name",
     type=str,metavar='', required=False, default="do_xor")
     parser.add_argument("--rkey", "-k", help="[Optional] Replace key variable name with a unique name",
     type=str,metavar='',required=False, default="key")
-    parser.add_argument("--rsleep", "-z", help="[Optional] Replace sleep time your own sleep time",
-    type=int,metavar='',required=False,default=4000)
+    parser.add_argument("--rsleep", "-z", help="[Optional] Give total sleep time to include during execution (seconds)",
+    type=int,metavar='',required=False,default=4)
+    parser.add_argument("--size", "-f", help="[Optional] File size of junk data in KB. Zero (0) is disabled (default), and one (1) is random filesize.",
+    type=int,metavar='',required=False,default=0)
 
     args = parser.parse_args()
     if (len(sys.argv)) < 1:
