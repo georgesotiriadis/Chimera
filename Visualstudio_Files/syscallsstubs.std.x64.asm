@@ -15,7 +15,20 @@ NtAllocateVirtualMemory PROC
 	mov rdx, [rsp+16]
 	mov r8, [rsp+24]
 	mov r9, [rsp+32]
-	mov r10, rcx
+	mov r15,rcx
+    mov r14,r15
+    mov r13,r14
+    mov r10,r13
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
 	syscall                    ; Invoke system call.
 	ret
 NtAllocateVirtualMemory ENDP
@@ -51,7 +64,20 @@ NtQueueApcThread PROC
 	mov rdx, [rsp+16]
 	mov r8, [rsp+24]
 	mov r9, [rsp+32]
-	mov r10, rcx
+	mov r15,rcx
+    mov r14,r15
+    mov r13,r14
+    mov r10,r13
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
 	syscall                    ; Invoke system call.
 	ret
 NtQueueApcThread ENDP
@@ -69,7 +95,20 @@ NtProtectVirtualMemory PROC
 	mov rdx, [rsp+16]
 	mov r8, [rsp+24]
 	mov r9, [rsp+32]
-	mov r10, rcx
+	mov r15,rcx
+    mov r14,r15
+    mov r13,r14
+    mov r10,r13
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
 	syscall                    ; Invoke system call.
 	ret
 NtProtectVirtualMemory ENDP
@@ -87,7 +126,20 @@ NtResumeThread PROC
 	mov rdx, [rsp+16]
 	mov r8, [rsp+24]
 	mov r9, [rsp+32]
-	mov r10, rcx
+	mov r15,rcx
+    mov r14,r15
+    mov r13,r14
+    mov r10,r13
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
 	syscall                    ; Invoke system call.
 	ret
 NtResumeThread ENDP
@@ -105,7 +157,20 @@ NtClose PROC
 	mov rdx, [rsp+16]
 	mov r8, [rsp+24]
 	mov r9, [rsp+32]
-	mov r10, rcx
+	mov r15,rcx
+    mov r14,r15
+    mov r13,r14
+    mov r10,r13
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
+    nop
 	syscall                    ; Invoke system call.
 	ret
 NtClose ENDP
