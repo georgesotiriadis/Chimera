@@ -25,7 +25,7 @@ def parse_arguments():
     parser.add_argument("--rkey", "-k", help="[Optional] Replace key variable name with a unique name",
     type=str,metavar='',required=False, default="key")
     parser.add_argument("--rsleep", "-z", help="[Optional] Give total sleep time to include during execution (seconds)",
-    type=int,metavar='',required=False,default=4)
+    type=int,metavar='',required=False,default=4000)
     parser.add_argument("--size", "-f", help="[Optional] File size of junk data in KB. Zero (0) is disabled (default), and one (1) is random filesize.",
     type=int,metavar='',required=False,default=0)
 
