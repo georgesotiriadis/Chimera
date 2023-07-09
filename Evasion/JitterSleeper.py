@@ -1,5 +1,5 @@
 def jitterSleeper(time):
     sleep = f"""
-            sleep({time});
+            Sleep({time});
             """
     return sleep
