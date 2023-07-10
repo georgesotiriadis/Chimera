@@ -2,7 +2,7 @@ import random
 import os
 
 from Dll_Names.Dlls import dll_names
-from Encryption.Xor import DoXor,key,key_hex
+from Encryption.XOR import DoXor,key,key_hex
 from Templates.Split_Xor_Shellcode import split_xor_shellcode
 from Templates.C_Template import template
 from Templates.Arguments  import parse_arguments
