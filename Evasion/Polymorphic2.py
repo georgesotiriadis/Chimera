@@ -75,7 +75,7 @@ def generate_cpp_junk_code(variables, additional_variables):
     code += "\t" + "// Obfuscated code\n"
     obfuscated_code = generate_expression(variables)
     obfuscated_code = base64.b64encode(obfuscated_code.encode()).decode()
-    code += f"\tcout << \"Obfuscated code: \" << {obfuscated_code} << endl;\n"
+    code += f"\tcout << \"Obfuscated code: \" << '{obfuscated_code}' << endl;\n"
     code += "\n"
     code += "\t" + "return 0;\n"
     code += "}"
