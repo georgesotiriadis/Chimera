@@ -79,15 +79,15 @@ def generate_cpp_junk_code(variables, additional_variables):
 
     return code
 
-# Generate variable pools
-variable_pool = [generate_variable_name() for _ in range(random.randint(5, 10))]
-additional_variable_pool = []
-for _ in range(random.randint(3, 5)):
-    var_type = random.choice(["double", "float", "string"])
-    variable = generate_variable_name()
-    additional_variable_pool.append((var_type, variable))
+def generate_code(): 
+    # Generate variable pools
+    variable_pool = [generate_variable_name() for _ in range(random.randint(5, 10))]
+    additional_variable_pool = []
+    for _ in range(random.randint(3, 5)):
+        var_type = random.choice(["double", "float", "string"])
+        variable = generate_variable_name()
+        additional_variable_pool.append((var_type, variable))
 
-# Generate random C++ junk code
-cpp_junk_code = generate_cpp_junk_code(variable_pool, additional_variable_pool)
-
-print(f'''{cpp_junk_code}''')
+    # Generate random C++ junk code
+    cpp_junk_code = generate_cpp_junk_code(variable_pool, additional_variable_pool)
+    return f'''{cpp_junk_code}'''
