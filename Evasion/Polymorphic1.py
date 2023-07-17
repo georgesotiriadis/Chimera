@@ -131,6 +131,5 @@ int main() {{
 
 def generate_cpp_script():
     cpp_code = generate_junk_function_cpp()
-    print(f'''{cpp_code}''')
+    return f'''{cpp_code}'''
 
-generate_cpp_script()
