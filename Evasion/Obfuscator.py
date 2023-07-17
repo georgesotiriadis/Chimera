@@ -3,7 +3,8 @@ import secrets
 
 from Evasion.Junk import junk
 from Evasion.JitterSleeper import jitterSleeper
-from Evasion.Polymorphic import polymorphic
+from Evasion.Polymorphic1 import generate_cpp_script
+from Evasion.Polymorphic2 import generate_code
 
 def obfuscatorArray(time):
     
@@ -96,13 +97,20 @@ def obfuscatorSize(size):
 
             return array
 
-def obfuscator(value,size):
+def obfuscator(value,size,disable):
+    #Random polymorphic choice
+    polymorphic = [generate_cpp_script(),generate_code()]
     #Disable filesize and junk data generation
     if size == 0 :
-        random_obf = [jitterSleeper(value),polymorphic()]
+        random_obf = [jitterSleeper(value),secrets.choice(polymorphic)]
+    #Disable sleep for domagic
+    elif disable == 1 and size == 0 :
+        random_obf = [secrets.choice(polymorphic)]
+    elif disable == 1 and size != 0:
+        random_obf = [junk(size),secrets.choice(polymorphic)]
     #Else we need junk data
     else:
-        random_obf = [junk(size),jitterSleeper(value),polymorphic()]
+        random_obf = [junk(size),jitterSleeper(value),secrets.choice(polymorphic)]
     
     #Randomly select obfuscation method
     selection = secrets.choice(random_obf)
