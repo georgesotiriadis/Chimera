@@ -9,7 +9,7 @@ def generate_variable_name():
 # Generate a random C++ expression using specific variables
 def generate_expression(variables):
     variable_name = random.choice(variables)
-    expression = f"{variable_name} = {random.randint(1, 100)};\n"
+    expression = f"{variable_name} += {random.randint(1, 100)};\n"
     return expression
 
 # Generate a random complex C++ expression
@@ -20,20 +20,11 @@ def generate_complex_expression(variables):
 
 # Generate random C++ junk code
 def generate_cpp_junk_code(variables, additional_variables):
-    code = "#include <cstdlib>\n\n"
-    code += "using namespace std;\n\n"
-    code += "void* customMalloc(size_t size) {\n"
-    code += "\tvoid* ptr = malloc(size);\n"
-    code += "\treturn ptr;\n"
-    code += "}\n\n"
-    code += "void* customCalloc(size_t num, size_t size) {\n"
-    code += "\tvoid* ptr = calloc(num, size);\n"
-    code += "\treturn ptr;\n"
-    code += "}\n\n"
-    code += "void customFree(void* ptr) {\n"
-    code += "\tfree(ptr);\n"
-    code += "}\n\n"
-    code += "int main() {\n\n"
+    value1 = random.choice(range(1,100))
+    code = "\tint num"+str(value1)+" = "+str(value1)+";\n"
+    code += "\tint size"+str(value1)+" = "+str(value1)+";\n"
+    code += "\tunsigned long long* ptr"+str(value1)+";\n"
+    code += "\nunsigned long long* ptr"+str(value1)+";\n"
     code += "\t" + "// Variable pool\n"
     for variable in variables:
         code += f"\tint {variable} = 0;\n"
@@ -56,20 +47,18 @@ def generate_cpp_junk_code(variables, additional_variables):
         code += f"\t// {variable_name}: " + variable_name + "\n"
     code += "\n"
     code += "\t" + "// Loops and memory allocation\n"
-    code += "\tint* ptr;\n"
-    code += "\tfor (int i = 0; i < 10; i++) {\n"
-    code += "\t\tint size = rand() % 100 + 1;\n"
-    code += "\t\tptr = (int*)customMalloc(size * sizeof(int));\n"
-    code += "\t\tfor (int j = 0; j < size; j++) {\n"
-    code += "\t\t\t*(ptr + j) = rand() % 100;\n"
+    code += "\tint* ptr"+str(value1)+";\n"
+    code += "\tfor (int i"+str(value1)+" = 0; i"+str(value1)+" < 10; i"+str(value1)+"++) {\n"
+    code += "\t\tint size"+str(value1)+" = rand() % 100 + 1;\n"
+    code += "\t\t*ptr"+str(value1)+" = (size"+str(value1)+" * sizeof(int));\n"
+    code += "\t\tfor (int j"+str(value1)+" = 0; j"+str(value1)+" < size"+str(value1)+"; j"+str(value1)+"++) {\n"
+    code += "\t\t\t(j"+str(value1)+") = rand() % 100;\n"
     code += "\t\t}\n"
-    code += "\t\tcustomFree(ptr);\n"
     code += "\t}\n"
     code += "\n"
     code += "\t" + "// Obfuscated code\n"
     code += "\n"
-    code += "\t" + "return 0;\n"
-    code += "}"
+    code += "\n"
 
     return code
 
@@ -78,7 +67,7 @@ def generate_code():
     variable_pool = [generate_variable_name() for _ in range(random.randint(5, 10))]
     additional_variable_pool = []
     for _ in range(random.randint(3, 5)):
-        var_type = random.choice(["double", "float", "string"])
+        var_type = random.choice(["double", "float", "int"])
         variable = generate_variable_name()
         additional_variable_pool.append((var_type, variable))
 
