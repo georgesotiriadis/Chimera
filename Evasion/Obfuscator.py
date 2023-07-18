@@ -97,20 +97,26 @@ def obfuscatorSize(size):
 
             return array
 
-def obfuscator(value,size,disable):
-    #Random polymorphic choice
-    polymorphic = [generate_cpp_script(),generate_code()]
+def obfuscator(value,size,disable,magic):
+    #simple
+    polymorphic1 = generate_code()
+    #class
+    polymorphic2 = generate_cpp_script()
     #Disable filesize and junk data generation
-    if size == 0 :
-        random_obf = [jitterSleeper(value),secrets.choice(polymorphic)]
+    if size == 0 and disable == 0 and magic == 0 :
+        random_obf = [jitterSleeper(value),polymorphic1]
     #Disable sleep for domagic
-    elif disable == 1 and size == 0 :
-        random_obf = [secrets.choice(polymorphic)]
-    elif disable == 1 and size != 0:
-        random_obf = [junk(size),secrets.choice(polymorphic)]
+    elif disable == 1 and size == 0 and magic == 0 :
+        random_obf = [polymorphic2]
+    elif disable == 1 and size != 0 and magic == 0:
+        random_obf = [junk(size),polymorphic2]
+    elif disable == 1 and size == 0 and magic == 1:
+        random_obf = [polymorphic1]
+    elif disable == 1 and size != 1 and magic == 1:
+        random_obf = [junk(size),polymorphic1]
     #Else we need junk data
     else:
-        random_obf = [junk(size),jitterSleeper(value),secrets.choice(polymorphic)]
+        random_obf = [junk(size),jitterSleeper(value),polymorphic1]
     
     #Randomly select obfuscation method
     selection = secrets.choice(random_obf)
