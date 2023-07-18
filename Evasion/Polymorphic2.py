@@ -10,34 +10,28 @@ def generate_variable_name():
 def generate_expression(variables):
     variable_name = random.choice(variables)
     expression = f"{variable_name} = {random.randint(1, 100)};\n"
-    expression += f"cout << \"{variable_name}: \" << {variable_name} << endl;\n"
     return expression
 
 # Generate a random complex C++ expression
 def generate_complex_expression(variables):
     variable_name = random.choice(variables)
     expression = f"{variable_name} = (2 * ({variable_name} + {random.randint(1, 10)})) / {random.randint(1, 5)};\n"
-    expression += f"cout << \"{variable_name}: \" << {variable_name} << endl;\n"
     return expression
 
 # Generate random C++ junk code
 def generate_cpp_junk_code(variables, additional_variables):
-    code = "#include <iostream>\n"
-    code += "#include <cstdlib>\n\n"
+    code = "#include <cstdlib>\n\n"
     code += "using namespace std;\n\n"
     code += "void* customMalloc(size_t size) {\n"
     code += "\tvoid* ptr = malloc(size);\n"
-    code += "\tcout << \"Custom malloc called. Size: \" << size << \", Address: \" << ptr << endl;\n"
     code += "\treturn ptr;\n"
     code += "}\n\n"
     code += "void* customCalloc(size_t num, size_t size) {\n"
     code += "\tvoid* ptr = calloc(num, size);\n"
-    code += "\tcout << \"Custom calloc called. Elements: \" << num << \", Size: \" << size << \", Address: \" << ptr << endl;\n"
     code += "\treturn ptr;\n"
     code += "}\n\n"
     code += "void customFree(void* ptr) {\n"
     code += "\tfree(ptr);\n"
-    code += "\tcout << \"Custom free called. Address: \" << ptr << endl;\n"
     code += "}\n\n"
     code += "int main() {\n\n"
     code += "\t" + "// Variable pool\n"
@@ -59,7 +53,7 @@ def generate_cpp_junk_code(variables, additional_variables):
     code += "\t" + "// Print variable values\n"
     for _ in range(random.randint(5, 10)):
         variable_name = random.choice(variables)
-        code += f"\tcout << \"{variable_name}: \" << {variable_name} << endl;\n"
+        code += f"\t// {variable_name}: " + variable_name + "\n"
     code += "\n"
     code += "\t" + "// Loops and memory allocation\n"
     code += "\tint* ptr;\n"

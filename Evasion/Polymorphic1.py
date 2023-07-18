@@ -48,19 +48,23 @@ public:
         return result;
     }}
 
-    void print() const {{
+    std::string toString() const {{
+        std::string output;
+
         if (real != 0.0 && imaginary != 0.0) {{
-            std::cout << real << " + " << imaginary << "i";
+            output += std::to_string(real) + " + " + std::to_string(imaginary) + "i";
         }}
         else if (real != 0.0) {{
-            std::cout << real;
+            output += std::to_string(real);
         }}
         else if (imaginary != 0.0) {{
-            std::cout << imaginary << "i";
+            output += std::to_string(imaginary) + "i";
         }}
         else {{
-            std::cout << "0";
+            output += "0";
         }}
+
+        return output;
     }}
 }};
 
@@ -99,24 +103,28 @@ void junkFunction() {{
 
     ComplexNumber powerResult = complexNumbers[maxMagnitudeIndex].power(std::rand() % 6 + 2);
 
-    std::cout << "Sum of complex numbers: ";
-    sum.print();
-    std::cout << std::endl;
+    std::string output;
 
-    std::cout << "Product of complex numbers: ";
-    product.print();
-    std::cout << std::endl;
+    output += "Sum of complex numbers: ";
+    output += sum.toString();
+    output += "\\n";
 
-    std::cout << "Complex number with the maximum magnitude: ";
-    complexNumbers[maxMagnitudeIndex].print();
-    std::cout << std::endl;
+    output += "Product of complex numbers: ";
+    output += product.toString();
+    output += "\\n";
 
-    std::cout << "Result of powering the complex number: ";
-    powerResult.print();
-    std::cout << std::endl;
+    output += "Complex number with the maximum magnitude: ";
+    output += complexNumbers[maxMagnitudeIndex].toString();
+    output += "\\n";
+
+    output += "Result of powering the complex number: ";
+    output += powerResult.toString();
+    output += "\\n";
 
     delete[] junkMemory;
     delete[] complexNumbers;
+
+    // You can do whatever you want with the 'output' string here
 }}
 
 int main() {{
@@ -132,4 +140,3 @@ int main() {{
 def generate_cpp_script():
     cpp_code = generate_junk_function_cpp()
     return f'''{cpp_code}'''
-
