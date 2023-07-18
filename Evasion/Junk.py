@@ -21,7 +21,7 @@ def junk(size):
         remaining_size = remaining_size - chunk_size
     
     # Define the characters to choose from
-    characters = string.ascii_letters + string.digits
+    characters = string.ascii_letters
 
     # Generate a random string of specified length
     length = random.choice(range(6,30))
@@ -29,7 +29,7 @@ def junk(size):
     
     #Create a variable to include in the template
     variable = f"""
-        {random_string}="{random_data}"
+        char {random_string}[] ="{random_data}";
     """
     
     return variable
