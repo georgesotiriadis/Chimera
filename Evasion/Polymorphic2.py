@@ -20,11 +20,11 @@ def generate_complex_expression(variables):
 
 # Generate random C++ junk code
 def generate_cpp_junk_code(variables, additional_variables):
-    value1 = random.choice(range(1,100))
+    value1 = random.choice(range(1,1000000))
+    value2 = random.choice(range(1,1000000))
     code = "\tint num"+str(value1)+" = "+str(value1)+";\n"
     code += "\tint size"+str(value1)+" = "+str(value1)+";\n"
     code += "\tunsigned long long* ptr"+str(value1)+";\n"
-    code += "\nunsigned long long* ptr"+str(value1)+";\n"
     code += "\t" + "// Variable pool\n"
     for variable in variables:
         code += f"\tint {variable} = 0;\n"
@@ -47,12 +47,12 @@ def generate_cpp_junk_code(variables, additional_variables):
         code += f"\t// {variable_name}: " + variable_name + "\n"
     code += "\n"
     code += "\t" + "// Loops and memory allocation\n"
-    code += "\tint* ptr"+str(value1)+";\n"
-    code += "\tfor (int i"+str(value1)+" = 0; i"+str(value1)+" < 10; i"+str(value1)+"++) {\n"
-    code += "\t\tint size"+str(value1)+" = rand() % 100 + 1;\n"
-    code += "\t\t*ptr"+str(value1)+" = (size"+str(value1)+" * sizeof(int));\n"
-    code += "\t\tfor (int j"+str(value1)+" = 0; j"+str(value1)+" < size"+str(value1)+"; j"+str(value1)+"++) {\n"
-    code += "\t\t\t(j"+str(value1)+") = rand() % 100;\n"
+    code += "\tint* ptr"+str(value2)+" = new int(1000);\n"
+    code += "\tfor (int i"+str(value2)+" = 0; i"+str(value2)+" < 10; i"+str(value2)+"++) {\n"
+    code += "\t\tint size"+str(value2)+" = rand() % 100 + 1;\n"
+    code += "\t\t*ptr"+str(value2)+" = (size"+str(value2)+" * sizeof(int));\n"
+    code += "\t\tfor (int j"+str(value2)+" = 0; j"+str(value2)+" < size"+str(value2)+"; j"+str(value2)+"++) {\n"
+    code += "\t\t\t(j"+str(value2)+") = rand() % 100;\n"
     code += "\t\t}\n"
     code += "\t}\n"
     code += "\n"
