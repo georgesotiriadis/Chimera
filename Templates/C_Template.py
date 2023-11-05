@@ -11,7 +11,7 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
     #include <stdio.h>
     #include "code.h"
     #include <stdlib.h>
-    #include "syscalls.h"
+    #include "syscalls_mem.h"
     #include <iostream>
     #include <cstring>
     #include <cstdio>
