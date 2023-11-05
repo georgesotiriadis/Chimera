@@ -1,18 +1,16 @@
 #pip install crypto, pycryptodome
 import sys
-#For Linux
 from Cryptodome.Cipher import AES 
-#For Windows
-#from Crypto.Cipher import AES
 from secrets import token_bytes
 from binascii import unhexlify
-import random
 import hashlib
+import random
 
-key = token_bytes(16)
-keyAES = ''.join([f"\\x{byte:02x}" for byte in key])
+#keyAES = token_bytes(16)
+key = ''.join([chr(random.randint(0, 255)) for i in range(16)])
+keyAES = ''.join(['\\x' + hex(ord(x))[2:].zfill(2) for x in key])
 
-def encryptAES(plaintext, keyAES):
+def encryptAES(plaintext,keyAES):
     
     def pad(s):
         padding_length = AES.block_size - len(s) % AES.block_size
@@ -29,3 +27,5 @@ def encryptAES(plaintext, keyAES):
     ciphertext = aesenc(plaintext, keyAES)
     
     return str(ciphertext)
+
+    

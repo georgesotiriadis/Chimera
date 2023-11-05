@@ -1,7 +1,7 @@
 def ChosenEncryption(encryption_type,xor_func):
 
     aes = f"""
-    int AESDec(char* size, unsigned int size_len, char* encryptionKey, size_t keySize) {{
+     int AESDec(char* size, unsigned int size_len, char* encryptionKey, size_t keySize) {{
 	HCRYPTPROV hHash;
 	HCRYPTHASH hHaHash;
 	HCRYPTKEY hencryptionKey;
@@ -29,6 +29,7 @@ def ChosenEncryption(encryption_type,xor_func):
 
 	return 0;
     }}
+    
     """
 
     xor=f"""

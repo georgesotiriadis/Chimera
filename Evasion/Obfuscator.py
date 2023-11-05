@@ -64,9 +64,9 @@ def obfuscatorSize(size):
             rng = random.SystemRandom()
             # Generate an array with random numbers
             #KB values
-            array_size = 30
-            min_value = 1000
-            max_value = 10000
+            array_size = 100
+            min_value = 10
+            max_value = 100
             random_array = [rng.randint(min_value, max_value) for _ in range(array_size)]
             return random_array
         #Separates in multiple values the give filesize
