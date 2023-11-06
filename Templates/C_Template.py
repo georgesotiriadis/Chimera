@@ -1,7 +1,6 @@
 import secrets
 
 from Injection.EarlyBird_Injection import EarlyBird
-from Injection.Module_Stomping import ModuleStomping
 from Encryption.Choose_Encryption import ChosenEncryption
 from Evasion.Obfuscator import obfuscator
 
