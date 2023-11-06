@@ -189,3 +189,4 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
     }}
     """
     return c_template
+    
