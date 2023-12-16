@@ -32,7 +32,7 @@ Key Updates and Features:
 - **SysWhispers 3 Integration**: Transitioned from SysWhispers 2 to a modified version of SysWhispers 3. This update improves the tool's ability to evade pattern recognition mechanisms employed by EDR systems, using dynamic syscalls and modified assembly techniques.
 - **AES Encryption**: Implemented AES encryption to secure shellcode, adding an additional layer of security and obfuscation.
 - **Early Bird Injection**: The tool employs Early Bird Injection techniques, allowing for stealthier code execution within target processes.
-- **Module Stompoing**: Will be added in the feature also you can implement your own code injection technique in the tool.
+- **Module Stomping**: Will be added in the feature also you can implement your own code injection technique in the tool.
 
 
 Chimera  is written in python3  and there is no need to install any extra dependencies.
