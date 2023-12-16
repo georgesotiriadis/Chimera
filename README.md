@@ -16,9 +16,10 @@ To automate the DLL sideloading process and make it more effective, Chimera was 
 
 Also Dynamic Syscalls from SysWhispers3 is used and a modified assembly version to evade the pattern that the EDR search for, Random nop sleds are added and also registers are moved. Furthermore Early Bird Injection is also used to inject the shellcode in another process which the user can specify with Sandbox Evasion mechanisms like HardDisk check & if the process is being debugged. Finally Timing attack is placed in the loader which using waitable timers to delay the execution of the shellcode.
 
-  
 
 This tool has been tested and shown to be effective at bypassing EDR/AV products and executing arbitrary code on a target system.
+
+The updated version of Chimera Unleashed has demonstrated significant advancements in evading both static and dynamic analysis, particularly in the context of Microsoft 365's Endpoint Detection and Response (EDR) system. The tool's sophisticated sideloading techniques, even when applied to well-known binaries like OneDrive, successfully eluded detection. However, it's noteworthy that while the sideloading aspect remained undetected, the Early Bird Injection process employed by the tool was identified by the EDR system. This highlights an area for further refinement in enhancing the tool's overall stealth capabilities.
 
   
 
