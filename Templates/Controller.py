@@ -12,6 +12,8 @@ from Evasion.Obfuscator import obfuscatorArray,obfuscatorSize
 
 
 def Controller():
+# Coordinates the overall functionality of the application
+# Integrates functions from DLL names, encryption, shellcode processing, and evasion
 
     #DLL_EXPORTS FOLDER PATH
     folder_path="./Dll_Exports/"

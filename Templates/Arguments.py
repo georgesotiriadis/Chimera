@@ -3,6 +3,10 @@
 import argparse
 import sys
 def parse_arguments():
+
+	
+   # Define the usage message so that the user will know how the script works
+   # Documentation
     parser = argparse.ArgumentParser(
         description="Example: [raw payload file] [output path] [process name] [dll_exports]\n")
     # All the possible arguments

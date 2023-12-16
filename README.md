@@ -26,14 +26,21 @@ This tool has been tested and shown to be effective at bypassing EDR/AV products
 
 * * *
 
+Key Updates and Features:
+- **Reformatted Structure**: The entire program has been restructured for enhanced development ease and future maintainability.
+- **Polymorphic Code Integration**: Incorporation of polymorphic code, significantly enhancing evasion capabilities and making the tool more resilient against static analysis.
+- **SysWhispers 3 Integration**: Transitioned from SysWhispers 2 to a modified version of SysWhispers 3. This update improves the tool's ability to evade pattern recognition mechanisms employed by EDR systems, using dynamic syscalls and modified assembly techniques.
+- **AES Encryption**: Implemented AES encryption to secure shellcode, adding an additional layer of security and obfuscation.
+- **Early Bird Injection**: The tool employs Early Bird Injection techniques, allowing for stealthier code execution within target processes.
+- **Module Stompoing**: Will be added in the feature also you can implement your own code injection technique in the tool.
+
+
 Chimera  is written in python3  and there is no need to install any extra dependencies.
 
-  
 
 Chimera currently supports two DLL options either Microsoft teams or Microsoft OneDrive.
 
   
-
 Someone can create userenv.dll which is a missing DLL from Microsoft Teams and insert it to the specific folder to 
 
 `⁠%USERPROFILE%/Appdata/local/Microsoft/Teams/current`  
@@ -42,27 +49,24 @@ Someone can create userenv.dll which is a missing DLL from Microsoft Teams and i
 For Microsoft OneDrive the script uses version DLL which is common because its missing from the binary example onedriveupdater.exe
 
   
-### Chimera Usage.
+### Command-Line Arguments
 
+Chimera Unleashed uses `argparser` for command-line argument parsing. The following arguments are available:
 
-`python3 ./chimera.py met.bin chimera_automation notepad.exe teams`
+- `--raw` or `-r`: Path to file containing shellcode. Required.
+- `--path` or `-p`: Path to output the C template file. Required.
+- `--pname` or `-n`: Name of process to inject shellcode into. Required.
+- `--dexports` or `-d`: Specify which DLL Exports to use (either 'teams' or 'onedrive'). Required.
+- `--enc` or `-e`: Specify preferred encryption (XOR / AES). Required.
+- `--inj` or `-i`: Specify preferred injection technique (EB / MS). Required.
+- `--rshell` or `-s`: [Optional] Replace shellcode variable name with a unique name. Default is 'encoded_shell'.
+- `--rxor` or `-x`: [Optional] Replace xor encryption name with a unique name. Default is 'do_xor'.
+- `--rkey` or `-k`: [Optional] Replace key variable name with a unique name. Default is 'key'.
+- `--rsleep` or `-z`: [Optional] Total sleep time to include during execution (seconds). Default is 4000.
+- `--size` or `-f`: [Optional] File size of junk data in KB. Zero (0) is disabled, and one (1) is random filesize. Default is 0.
 
-`python3 ./chimera.py met.bin chimera_automation notepad.exe onedrive`
+Example usage: `python Chimera.py --raw <path_to_shellcode> --path <output_path> --pname <process_name> --dexports <exports_file> --enc AES --inj EB --rshell my_shellcode`
 
-### Additional Options
-
-* * *
-
-- [x]  \[raw payload file\] : Path to file containing shellcode
-- [x]  \[output path\] : Path to output the C template file
-- [x]  \[process name\] : Name of process to inject shellcode into
-- [x]  \[dll\_exports\] : Specify which DLL Exports you want to use either teams or onedrive
-- [x]  \[replace shellcode variable name\] : \[Optional\] Replace shellcode variable name with a unique name
-- [x]  \[replace xor encryption name\] : \[Optional\] Replace xor encryption name with a unique name
-- [x]  \[replace key variable name\] : \[Optional\] Replace key variable name with a unique name
-- [x]  \[replace sleep time via waitable timers\] : \[Optional\] Replace sleep time your own sleep time
-
-  
 
 ### Usefull Note
 

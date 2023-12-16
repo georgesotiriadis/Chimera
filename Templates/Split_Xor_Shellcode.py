@@ -2,6 +2,8 @@ import sys
 
 
 def split_xor_shellcode(ciphertext):
+    # Splits encrypted shellcode into manageable chunks
+    # Formats them for use in the application
 
     # Split the ciphertext into chunks of 50 hex values
     chunks = [ciphertext[i:i+50] for i in range(0, len(ciphertext), 50)]
