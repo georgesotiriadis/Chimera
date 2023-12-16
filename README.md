@@ -19,7 +19,7 @@ Also Dynamic Syscalls from SysWhispers3 is used and a modified assembly version 
 
 This tool has been tested and shown to be effective at bypassing EDR/AV products and executing arbitrary code on a target system.
 
-The updated version of Chimera Unleashed has demonstrated significant advancements in evading both static and dynamic analysis, particularly in the context of Microsoft 365's Endpoint Detection and Response (EDR) system. The tool's sophisticated sideloading techniques, even when applied to well-known binaries like OneDrive, successfully eluded detection. However, it's noteworthy that while the sideloading aspect remained undetected, the Early Bird Injection process employed by the tool was identified by the EDR system. This highlights an area for further refinement in enhancing the tool's overall stealth capabilities.
+The updated version of Chimera Unleashed has demonstrated significant advancements in evading both static and dynamic analysis, particularly in the context of Microsoft 365's Endpoint Detection and Response (EDR) system. The tool's  sideloading techniques, even when applied to well-known binaries like OneDrive, successfully eluded detection. However, it's noteworthy that while the sideloading aspect remained undetected, the Early Bird Injection process employed by the tool was identified by the EDR system. This highlights an area for further refinement in enhancing the tool's overall stealth capabilities.
 
   
 
