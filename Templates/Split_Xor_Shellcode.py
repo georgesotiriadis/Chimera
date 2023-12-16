@@ -12,3 +12,13 @@ def split_xor_shellcode(ciphertext):
     return ciphertext_split
 
 
+def split_aes_shellcode(ciphertext):
+    ciphertext_split = ''
+    
+    lines = [ciphertext[i:i+60] for i in range(0, len(ciphertext), 60)]
+
+    # Join the lines with newline characters to create the final result
+    ciphertext_split = '\n'.join(lines)
+
+
+    return ciphertext_split

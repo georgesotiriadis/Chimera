@@ -1,7 +1,6 @@
 import secrets
 
 from Injection.EarlyBird_Injection import EarlyBird
-from Injection.Module_Stomping import ModuleStomping
 from Encryption.Choose_Encryption import ChosenEncryption
 from Evasion.Obfuscator import obfuscator
 
@@ -189,3 +188,4 @@ def template(file_contents,xor_func,shellcode_var,ciphertext_split,key_var,key_h
     }}
     """
     return c_template
+    
