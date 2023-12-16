@@ -97,15 +97,15 @@ Step 1: Creating a New Visual Studio Project with DLL Template
 
   
 
-Step 2: Importing Images into the Visual Studio Project
+Step 2: Importing Files into the Visual Studio Project
 
 1. Locate the "chimera\_automation" folder containing the necessary Images.
-2. Open the folder and identify the following Images: main.c, syscalls.c, syscallsstubs.std.x64.asm.
+2. Open the folder and identify the following files: main.c, syscalls.c, syscallsstubs.std.x64.asm.
 3. In Visual Studio, right-click on the project in the "Solution Explorer" panel and select "Add" -> "Existing Item."
 4. Browse to the location of each file (main.c, syscalls.c, syscallsstubs.std.x64.asm) and select them one by one. Click "Add" to import them into the project.
-5. Create a folder named "header\_Images" within the project directory if it doesn't exist already.
-6. Locate the "syscalls.h" header file in the "header\_Images" folder of the "chimera\_automation" directory.
-7. Right-click on the "header\_Images" folder in Visual Studio's "Solution Explorer" panel and select "Add" -> "Existing Item."
+5. Create a folder named "header\_files" within the project directory if it doesn't exist already.
+6. Locate the "syscalls.h" header file in the "header\_files" folder of the "chimera\_automation" directory.
+7. Right-click on the "header\_files" folder in Visual Studio's "Solution Explorer" panel and select "Add" -> "Existing Item."
 8. Browse to the location of "syscalls.h" and select it. Click "Add" to import it into the project.
 
   
