@@ -160,6 +160,21 @@ Step 2: Remove Debug Information's
 
 ![](Images/image%207.png)  
 
+
+## Contributors
+
+**Original Contributor:**
+- George Sotiriadis
+  - Initial release and concept.
+  - Code refactoring in the updated version.
+  - Modified SysWhispers3 in the updated version. 
+
+**Contributor:**
+- Efstratios Chatzoglou
+  - Added polymorphic code, obfuscator, and AES encryption in the updated version.
+  - Assisted in code refactoring and further development.
+
+
 ## Liability Disclaimer:
 
 * * *
