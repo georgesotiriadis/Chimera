@@ -105,9 +105,9 @@ Step 2: Importing Files into the Visual Studio Project
 3. In Visual Studio, right-click on the project in the "Solution Explorer" panel and select "Add" -> "Existing Item."
 4. Browse to the location of each file (main.c, syscalls.c, syscallsstubs.std.x64.asm) and select them one by one. Click "Add" to import them into the project.
 5. Create a folder named "header\_files" within the project directory if it doesn't exist already.
-6. Locate the "syscalls.h" header file in the "header\_files" folder of the "chimera\_automation" directory.
+6. Locate the "syscalls_mem.h" header file in the "header\_files" folder of the "chimera\_automation" directory.
 7. Right-click on the "header\_files" folder in Visual Studio's "Solution Explorer" panel and select "Add" -> "Existing Item."
-8. Browse to the location of "syscalls.h" and select it. Click "Add" to import it into the project.
+8. Browse to the location of "syscalls_mem.h" and select it. Click "Add" to import it into the project.
 
   
 
