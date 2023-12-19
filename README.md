@@ -11,10 +11,10 @@
 
 While DLL sideloading can be used for legitimate purposes, such as loading necessary libraries for a program to function, it can also be used for malicious purposes. Attackers can use DLL sideloading to execute arbitrary code on a target system, often by exploiting vulnerabilities in legitimate applications that are used to load DLLs.
 
-To automate the DLL sideloading process and make it more effective, Chimera was created a tool that include evasion methodologies to bypass EDR/AV products. These tool can automatically encrypt a shellcode via XOR with a random key and create template Images that can be imported into Visual Studio to create a malicious DLL.
+To automate the DLL sideloading process and make it more effective, Chimera was created a tool that includes evasion methodologies to bypass EDR/AV products. This tool can automatically encrypt a shellcode via XOR with a random key and create template Images that can be imported into Visual Studio to create a malicious DLL.
 
 
-Also Dynamic Syscalls from SysWhispers3 is used and a modified assembly version to evade the pattern that the EDR search for, Random nop sleds are added and also registers are moved. Furthermore Early Bird Injection is also used to inject the shellcode in another process which the user can specify with Sandbox Evasion mechanisms like HardDisk check & if the process is being debugged. Finally Timing attack is placed in the loader which using waitable timers to delay the execution of the shellcode.
+Also, Dynamic Syscalls from SysWhispers3 is used and a modified assembly version to evade the pattern that the EDR search for, Random nop sleds are added and registers are moved. Furthermore, Early Bird Injection is also used to inject the shellcode in another process which the user can specify with Sandbox Evasion mechanisms like HardDisk check & if the process is being debugged. Finally Timing attack is placed in the loader which uses waitable timers to delay the execution of the shellcode.
 
 
 This tool has been tested and shown to be effective at bypassing EDR/AV products and executing arbitrary code on a target system.
@@ -33,21 +33,21 @@ Key Updates and Features:
 - **SysWhispers 3 Integration**: Transitioned from SysWhispers 2 to a modified version of SysWhispers 3. This update improves the tool's ability to evade pattern recognition mechanisms employed by EDR systems, using dynamic syscalls and modified assembly techniques.
 - **AES Encryption**: Implemented AES encryption to secure shellcode, adding an additional layer of security and obfuscation.
 - **Early Bird Injection**: The tool employs Early Bird Injection techniques, allowing for stealthier code execution within target processes.
-- **Module Stomping**: Will be added in the feature also you can implement your own code injection technique in the tool.
+- **Module Stomping**: Will be added in the future also you can implement your own code injection technique in the tool.
 
 
-Chimera  is written in python3  and there is no need to install any extra dependencies.
+Chimera is written in python3  and there is no need to install any extra dependencies.
 
 
 Chimera currently supports two DLL options either Microsoft teams or Microsoft OneDrive.
 
   
-Someone can create userenv.dll which is a missing DLL from Microsoft Teams and insert it to the specific folder to 
+Someone can create userenv.dll which is a missing DLL from Microsoft Teams and insert it into the specific folder to 
 
 `⁠%USERPROFILE%/Appdata/local/Microsoft/Teams/current`  
 
   
-For Microsoft OneDrive the script uses version DLL which is common because its missing from the binary example onedriveupdater.exe
+For Microsoft OneDrive the script uses version DLL which is common because it's missing from the binary example onedriveupdater.exe
 
   
 ### Command-Line Arguments
@@ -69,11 +69,13 @@ Chimera Unleashed uses `argparser` for command-line argument parsing. The follow
 Example usage: `python Chimera.py --raw <path_to_shellcode> --path <output_path> --pname <process_name> --dexports <exports_file> --enc AES --inj EB --rshell my_shellcode`
 
 
-### Usefull Note
+### Useful Note
 
 Once the compilation process is complete, a DLL will be generated, which should include either "version.dll" for OneDrive or "userenv.dll" for Microsoft Teams. Next, it is necessary to rename the original DLLs.
 
 For instance, the original "userenv.dll" should be renamed as "tmpB0F7.dll," while the original "version.dll" should be renamed as "tmp44BC.dll." Additionally, you have the option to modify the name of the proxy DLL as desired by altering the source code of the DLL exports instead of using the default script names.
+
+code.h file contains the shellcode.
 
 ## Visual Studio Project Setup
 
@@ -128,7 +130,7 @@ Step 4: Enable MASM
   
 Step 5: 
 
-1. Right click in the assembly file → properties and choose the following
+1. Right-click in the assembly file → properties and choose the following
 2. Exclude from build → No
 3. Content → Yes
 4. Item type → Microsoft Macro Assembler
@@ -154,7 +156,7 @@ Step 1: Change optimization 
 
 ![](Images/image%206.png)  
 
-Step 2: Remove Debug Information's
+Step 2: Remove Debug Information
 
 1. In Visual Studio choose Project → properties 
 2. Linker → Debugging → Generate Debug Info → No
